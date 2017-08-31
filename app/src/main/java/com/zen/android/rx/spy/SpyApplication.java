@@ -3,8 +3,11 @@ package com.zen.android.rx.spy;
 import android.app.Application;
 import android.content.Context;
 import android.util.Log;
+import rx.Observable;
 import rx.Scheduler;
+import rx.Subscription;
 import rx.internal.schedulers.CachedThreadScheduler;
+import rx.plugins.RxJavaObservableExecutionHook;
 import rx.plugins.RxJavaPlugins;
 import rx.plugins.RxJavaSchedulersHook;
 
@@ -15,6 +18,10 @@ import java.util.concurrent.ThreadFactory;
  *         created on 2017/8/30
  */
 public class SpyApplication extends Application{
+
+    static {
+        System.setProperty("rx.io-scheduler.keepalive", "5");
+    }
 
     Scheduler ioScheduler = new CachedThreadScheduler(new ThreadFactory() {
         @Override

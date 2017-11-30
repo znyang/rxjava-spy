@@ -5,8 +5,9 @@ import android.os.SystemClock;
 import android.util.Log;
 import rx.Observable;
 import rx.Subscriber;
+import rx.functions.Func0;
 
-public class RxCreateActivity extends BaseRxCaseWithActionActivity<String> {
+public class RxDeferActivity extends BaseRxCaseActivity<String> {
 
     @Override
     protected void onBaseCreate(Bundle savedInstanceState) {
@@ -15,19 +16,16 @@ public class RxCreateActivity extends BaseRxCaseWithActionActivity<String> {
 
     @Override
     Observable<String> onCreateObservable() {
-        return Observable.create(new CreateSubscribe());
+        return Observable.defer(new DeferObservable());
     }
 
-    static class CreateSubscribe implements Observable.OnSubscribe<String> {
+    static class DeferObservable implements Func0<Observable<String>> {
 
         @Override
-        public void call(Subscriber<? super String> subscriber) {
-            SystemClock.sleep(5000);
-            subscriber.onNext("1");
-            SystemClock.sleep(20000);
-            subscriber.onNext("2");
+        public Observable<String> call() {
+            SystemClock.sleep(10000);
             Log.w("RxJava", "sleep end");
-            subscriber.onCompleted();
+            return Observable.just("1");
         }
     }
 

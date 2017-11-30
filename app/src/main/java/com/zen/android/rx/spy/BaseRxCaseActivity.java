@@ -43,10 +43,13 @@ public abstract class BaseRxCaseActivity<Result> extends AppCompatActivity {
         onBaseCreate(savedInstanceState);
 
         Observable<Result> obs = onCreateObservable();
-        Subscription subscription = onCreateSubscription(obs);
-        Log.w(TAG_RX, "subscribe " + subscription.toString());
+        Subscription sub1 = onCreateSubscription(obs);
+        Log.w(TAG_RX, "subscribe " + sub1.toString());
+        Subscription sub2 = onCreateSubscription(obs);
+        Log.w(TAG_RX, "subscribe " + sub2.toString());
 
-        mCompositeSubscription.add(subscription);
+        mCompositeSubscription.add(sub1);
+        mCompositeSubscription.add(sub2);
     }
 
     @Override

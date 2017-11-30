@@ -18,7 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".RxTimerActivity">
+        <activity android:name=".RxTimerActivity"/>
+        <activity android:name=".RxDeferActivity"/>
+        <activity android:name=".not.NumberOfThreadActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 

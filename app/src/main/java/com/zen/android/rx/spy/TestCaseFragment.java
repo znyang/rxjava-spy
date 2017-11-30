@@ -24,8 +24,8 @@ public class TestCaseFragment extends Fragment implements View.OnClickListener {
 
     private RecyclerView mRecyclerView;
 
-    private String[] TITLES  = {"Create", "Timer"};
-    private Class[]  CLASSES = new Class[]{RxCreateActivity.class, RxTimerActivity.class};
+    private String[] TITLES  = {"Create", "Defer", "Timer"};
+    private Class[]  CLASSES = new Class[]{RxCreateActivity.class, RxDeferActivity.class, RxTimerActivity.class};
 
     public TestCaseFragment() {
         // Required empty public constructor
